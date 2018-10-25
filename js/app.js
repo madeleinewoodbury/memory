@@ -29,20 +29,55 @@ gridContainer.addEventListener('click', function(e){
         return;
     }
 
+    // only 2 cards can be selected at once
     if(count < 2){
         count++;
-        clicked.parentNode.classList.toggle('flip');
+        let selectedCard = clicked.parentNode;
+        console.log(selectedCard);
+        selectedCard.classList.toggle('flip');
+        selectedCard.classList.toggle('selected');
 
         if(count === 1){
-            firstCard = clicked.parentNode.dataset;
+            firstCard = selectedCard.dataset.name;
             console.log(firstCard);
         }else{
-            secondCard = clicked.parentNode.dataset;
+            secondCard = selectedCard.dataset.name;
             console.log(secondCard);
+        }
+
+        if(firstCard && secondCard){
+            if(firstCard === secondCard){
+                console.log('MATCH!!!');
+                match();
+            }else{
+                console.log('Sorry, not a match');
+            }
+
+            // reset guesses
+            setTimeout(resetGuesses, 1000);
         }
     }
      
+    function resetGuesses(){
+        firstCard = '';
+        secondCard = '';
+        count = 0;
 
+        // remove the flip class from selected cards
+        let selectedCards = document.querySelectorAll('.selected');
+        for(let card of selectedCards){
+            console.log(card);
+            card.classList.toggle('flip');
+            card.classList.remove('selected');
+        }
+    }
 
+    function match(){
+        // replace the selected class with match
+        let selectedCards = document.querySelectorAll('.selected');
+        for(let card of selectedCards){
+            card.classList.replace('selected', 'match');
+        }
+    }
 
 })
