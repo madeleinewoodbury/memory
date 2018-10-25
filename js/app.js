@@ -24,6 +24,8 @@ for(let i = 0; i < iconsArray.length; i++){
 
     const back = document.createElement('div');
     back.classList.add('back');
+    let img = iconsArray[i];
+    back.style.backgroundImage = `url("media/${img}.svg")`
 
     card.appendChild(front);
     card.appendChild(back);
@@ -35,7 +37,6 @@ gridContainer.addEventListener('click', function(e){
     let clicked = e.target;
 
     if(clicked.classList.contains('grid-container')){
-        console.log('grid clicked');
         return;
     }
 
@@ -50,10 +51,8 @@ gridContainer.addEventListener('click', function(e){
 
         if(count === 1){
             firstCard = selectedCard.dataset.name;
-            console.log(firstCard);
         }else{
             secondCard = selectedCard.dataset.name;
-            console.log(secondCard);
         }
 
         if(firstCard && secondCard){
@@ -77,7 +76,6 @@ gridContainer.addEventListener('click', function(e){
         // remove the flip class from selected cards
         let selectedCards = document.querySelectorAll('.selected');
         for(let card of selectedCards){
-            console.log(card);
             card.classList.toggle('flip');
             card.classList.remove('selected');
         }
@@ -87,7 +85,9 @@ gridContainer.addEventListener('click', function(e){
         // replace the selected class with match
         let selectedCards = document.querySelectorAll('.selected');
         for(let card of selectedCards){
-            card.classList.replace('selected', 'match');
+            card.classList.remove('selected');
+            card.children[1].classList.add('match');
+            console.log(card.children[1]);
         }
     }
 

@@ -58,6 +58,8 @@ h1{
 .back{
     transform: rotateY(180deg);
     background-color: yellow;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .flip{
