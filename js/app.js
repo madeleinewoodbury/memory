@@ -1,6 +1,8 @@
 const gridContainer = document.querySelector('.grid-container');
-
 const iconsArray = ["airplane", "car", "doughnut", "earth-globe", "gamepad", "llama", "rocket", "squirrel", "airplane", "car", "doughnut", "earth-globe", "gamepad", "llama", "rocket", "squirrel"];
+let count = 0;
+let firstCard = '';
+let secondCard = '';
 
 for(let i = 0; i < iconsArray.length; i++){
     const card = document.createElement('card');
@@ -27,7 +29,19 @@ gridContainer.addEventListener('click', function(e){
         return;
     }
 
-     clicked.parentNode.classList.toggle('flip');
+    if(count < 2){
+        count++;
+        clicked.parentNode.classList.toggle('flip');
+
+        if(count === 1){
+            firstCard = clicked.parentNode.dataset;
+            console.log(firstCard);
+        }else{
+            secondCard = clicked.parentNode.dataset;
+            console.log(secondCard);
+        }
+    }
+     
 
 
 
