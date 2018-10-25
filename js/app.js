@@ -3,7 +3,17 @@ const iconsArray = ["airplane", "car", "doughnut", "earth-globe", "gamepad", "ll
 let count = 0;
 let firstCard = '';
 let secondCard = '';
+let moves = 0;
 
+let movesDisplay = document.getElementById('moves-display');
+movesDisplay.textContent = moves;
+
+// randomly sort iconsArray
+iconsArray.sort(function(){
+    return 0.5 - Math.random();
+});
+
+// draw card grid
 for(let i = 0; i < iconsArray.length; i++){
     const card = document.createElement('card');
     card.classList.add('card');
@@ -32,6 +42,7 @@ gridContainer.addEventListener('click', function(e){
     // only 2 cards can be selected at once
     if(count < 2){
         count++;
+        movesDisplay.textContent = moves += 1;
         let selectedCard = clicked.parentNode;
         console.log(selectedCard);
         selectedCard.classList.toggle('flip');
