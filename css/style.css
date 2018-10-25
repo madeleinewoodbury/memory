@@ -1,0 +1,66 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h1{
+    text-align: center;
+}
+
+.game-stats{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+
+#moves{
+    width: 50%;
+    text-align: center;
+}
+
+#timer{
+    width: 50%;
+    text-align: center;
+}
+
+.grid-container{
+    background-color: aqua;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card{
+    position: relative;
+    height: 100px;
+    width: 200px;
+    margin: 5px;
+    transition: all .5s ease;
+    transform-style: preserve-3d;
+    display: flex;
+}
+
+.back, .front{
+    position: absolute;
+    backface-visibility: hidden;
+    width: 200px;
+    height: 100px;
+}
+
+.front{
+    background-color: blueviolet;    
+}
+
+.back{
+    transform: rotateY(180deg);
+    background-color: yellow;
+}
+
+.flip{
+    transform: rotateY(180deg);
+}
+
