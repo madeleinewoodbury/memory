@@ -4,6 +4,7 @@ let count = 0;
 let firstCard = '';
 let secondCard = '';
 let moves = 0;
+let matchesFound = 0;
 
 let movesDisplay = document.getElementById('moves-display');
 movesDisplay.textContent = moves;
@@ -21,6 +22,7 @@ for(let i = 0; i < iconsArray.length; i++){
 
     const front = document.createElement('div');
     front.classList.add('front');
+    front.style.backgroundImage = `url("media/memory.svg")`
 
     const back = document.createElement('div');
     back.classList.add('back');
@@ -36,7 +38,8 @@ for(let i = 0; i < iconsArray.length; i++){
 gridContainer.addEventListener('click', function(e){
     let clicked = e.target;
 
-    if(clicked.classList.contains('grid-container')){
+    if(clicked.classList.contains('grid-container') ||
+        clicked.parentNode.classList.contains('selected')){
         return;
     }
 
@@ -45,7 +48,6 @@ gridContainer.addEventListener('click', function(e){
         count++;
         movesDisplay.textContent = moves += 1;
         let selectedCard = clicked.parentNode;
-        console.log(selectedCard);
         selectedCard.classList.toggle('flip');
         selectedCard.classList.toggle('selected');
 
@@ -89,6 +91,27 @@ gridContainer.addEventListener('click', function(e){
             card.children[1].classList.add('match');
             console.log(card.children[1]);
         }
+
+        matchesFound++;
+
+        // check if all matches have been found
+        if(matchesFound === 8){
+            modal();
+            console.log('GAME WON!');
+        }
     }
 
 })
+
+function modal(){
+    const modal = document.querySelector('.modal');
+    const restartBtn = document.querySelector('#restart-btn');
+
+    modal.style.display = 'block';
+
+    restartBtn.addEventListener('click', function(){
+        console.log('restart button clicked')
+        modal.style.display = 'none';
+        window.location.reload(true);
+    });
+}
