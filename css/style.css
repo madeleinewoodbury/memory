@@ -5,6 +5,23 @@ body, html{
     height: 100%;
 }
 
+html{
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: inherit;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 h1{
     text-align: center;
 }
@@ -25,23 +42,40 @@ h1{
     text-align: center;
 }
 
+
 .grid-container{
-    background-color: aqua;
+    width: 660px;
+    min-height: 680px;
+    background: #fc4a1a;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    width: 80%;
-    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
 }
+
+
 
 .card{
     position: relative;
-    height: 100px;
-    width: 200px;
     margin: 5px;
     transition: all .5s ease;
     transform-style: preserve-3d;
     display: flex;
+    height: 125px;
+    width: 125px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+ 
 }
 
 .back, .front{
@@ -49,17 +83,15 @@ h1{
     backface-visibility: hidden;
     background-repeat: no-repeat;
     background-position: center;
-    width: 200px;
-    height: 100px;
-}
-
-.front{
-    background-color: blueviolet;   
+    background-size: 100px;
+    background-color: #D9F5F3;
+    border-radius: inherit;
+    height: 125px;
+    width: 125px;
 }
 
 .back{
     transform: rotateY(180deg);
-    background-color: yellow;
 }
 
 .flip{
@@ -89,4 +121,3 @@ h1{
     margin: 25% auto;
     text-align: center;
 }
-
