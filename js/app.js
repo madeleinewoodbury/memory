@@ -35,6 +35,16 @@ for(let i = 0; i < iconsArray.length; i++){
     gridContainer.appendChild(card);
 }
 
+// TIMER
+let timerDisplay = document.querySelector('#timerDisplay');
+let seconds = 0;
+let interval = setInterval(timer, 1000);
+
+function timer(){
+    seconds++;
+    timerDisplay.innerHTML = seconds;
+}
+
 gridContainer.addEventListener('click', function(e){
     let clicked = e.target;
 
@@ -106,7 +116,13 @@ gridContainer.addEventListener('click', function(e){
 function modal(){
     const modal = document.querySelector('.modal');
     const restartBtn = document.querySelector('#restart-btn');
+    const totalTime = document.querySelector('#totalTime');
 
+    // clear interval and display total time
+    clearInterval(interval); 
+    totalTime.innerHTML = seconds;
+
+    // display modal
     modal.style.display = 'block';
 
     restartBtn.addEventListener('click', function(){
@@ -115,3 +131,7 @@ function modal(){
         window.location.reload(true);
     });
 }
+
+
+
+
