@@ -1,7 +1,11 @@
 # Memory Card Game
+A classic memory game where the object is to find all the matching cards
 
-## Instructions
-Instructions on how to play the game
+## How to Play
+* Click on a card to flip it over
+* Find the card that matches, a wrong guess will flip both cards over again
+* When all the matches have been found, the game is finished
+* Try finding all the matches in as few moves as possible to increase your star rating
 
 ## Credits
 **Icons**: Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)

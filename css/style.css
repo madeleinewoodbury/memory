@@ -75,6 +75,10 @@ li{
     display: inline-block;
 }
 
+.hide{
+    display: none;
+}
+
 
 /* CARD GRID */
 
@@ -93,8 +97,6 @@ li{
     align-items: center;
     margin: 0 0 3em;
 }
-
-
 
 .card{
     position: relative;
@@ -169,14 +171,9 @@ li{
     color: black;
 }
 
-
 a{
     text-decoration: none;
     color: white;
-}
-
-.hide{
-    display: none;
 }
 
 .footer{
@@ -186,9 +183,6 @@ a{
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 685px){
-
-    /* GAME STATS */
-    
     .game-stats{
         width: 500px;
         margin: 0 auto;
@@ -205,9 +199,7 @@ a{
     #stars{
         padding-right: 20px;
     }
-    
-    /* CARD GRID */
-    
+
     .grid-container{
         width: 480px;
         min-height: 550px;
@@ -226,7 +218,6 @@ a{
         width: 100px;
         background-size: 70px;
     }
-    
 }
 
 @media screen and (max-width: 500px){
@@ -235,8 +226,6 @@ a{
         margin-bottom: 0;
     }
 
-    /* GAME STATS */
-    
     .game-stats{
         width: 300px;
         font-size: 16px;
@@ -249,8 +238,6 @@ a{
     #stars{
         padding: 0 5px 0 0;
     }
-    
-    /* CARD GRID */
     
     .grid-container{
         width: 300px;

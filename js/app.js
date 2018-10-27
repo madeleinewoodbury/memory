@@ -1,15 +1,20 @@
+// GLOBAL VARIABLES
+
 const gridContainer = document.querySelector('.grid-container');
+const stars = document.querySelectorAll('li');
 const iconsArray = ["airplane", "car", "doughnut", "earth-globe", "gamepad", "llama", "rocket", "squirrel", "airplane", "car", "doughnut", "earth-globe", "gamepad", "llama", "rocket", "squirrel"];
+
 let count = 0;
 let firstCard = '';
 let secondCard = '';
 let moves = 0;
 let matchesFound = 0;
 let rating = 3;
-
-const stars = document.querySelectorAll('li');
-
 let movesDisplay = document.getElementById('moves-display');
+let timerDisplay = document.querySelector('#timerDisplay');
+let seconds = 0;
+let interval = setInterval(timer, 1000);
+
 movesDisplay.textContent = moves;
 
 // randomly sort iconsArray
@@ -38,28 +43,19 @@ for(let i = 0; i < iconsArray.length; i++){
     gridContainer.appendChild(card);
 }
 
-// TIMER
-let timerDisplay = document.querySelector('#timerDisplay');
-let seconds = 0;
-let interval = setInterval(timer, 1000);
-
-function timer(){
-    seconds++;
-    timerDisplay.innerHTML = seconds;
-}
-
-// EVENT LISTENR ON GRID CONTAINER
+// event listener on gridContainer
 gridContainer.addEventListener('click', function(e){
+    // store the card clicked
     let clicked = e.target;
-    console.log(clicked.classList);
 
+    // determine if an unselected card has been clicked
     if(clicked.classList.contains('grid-container') ||
         clicked.parentNode.classList.contains('selected') ||
         clicked.classList.contains('match')){
         return;
     }
 
-    // only 2 cards can be selected at once
+    // only 2 cards can be selected at a time
     if(count < 2){
         count++;
         movesDisplay.textContent = moves += 1;
@@ -67,10 +63,12 @@ gridContainer.addEventListener('click', function(e){
         // Check star rating
         starRating();
 
+        // access the clicked card's parant and toggle flip and selecte class
         let selectedCard = clicked.parentNode;
         selectedCard.classList.toggle('flip');
         selectedCard.classList.toggle('selected');
 
+        // set the firstCard or secondCard variables
         if(count === 1){
             firstCard = selectedCard.dataset.name;
         }else{
@@ -90,35 +88,37 @@ gridContainer.addEventListener('click', function(e){
         }
     }
      
-    function resetGuesses(){
-        firstCard = '';
-        secondCard = '';
-        count = 0;
+// FUNCTIONS
 
-        // remove the flip class from selected cards
-        let selectedCards = document.querySelectorAll('.selected');
-        for(let card of selectedCards){
-            card.classList.toggle('flip');
-            card.classList.remove('selected');
-        }
+function resetGuesses(){
+    firstCard = '';
+    secondCard = '';
+    count = 0;
+
+    // remove the flip class from selected cards
+    let selectedCards = document.querySelectorAll('.selected');
+    for(let card of selectedCards){
+        card.classList.toggle('flip');
+        card.classList.remove('selected');
+    }
+}
+
+function match(){
+    // replace the selected class with match
+    let selectedCards = document.querySelectorAll('.selected');
+    for(let card of selectedCards){
+        card.classList.remove('selected');
+        card.children[1].classList.add('match');
     }
 
-    function match(){
-        // replace the selected class with match
-        let selectedCards = document.querySelectorAll('.selected');
-        for(let card of selectedCards){
-            card.classList.remove('selected');
-            card.children[1].classList.add('match');
-        }
+    matchesFound++;
 
-        matchesFound++;
-
-        // check if all matches have been found
-        if(matchesFound === 8){
-            modal();
-            console.log('GAME WON!');
-        }
+    // check if all matches have been found
+    if(matchesFound === 8){
+        modal();
+        console.log('GAME WON!');
     }
+}
 
 })
 
@@ -152,6 +152,14 @@ const restartBtn = document.querySelector('#restartBtn');
 restartBtn.addEventListener('click', function(){
     window.location.reload(true);
 });
+
+// TIMER
+
+
+function timer(){
+    seconds++;
+    timerDisplay.innerHTML = seconds;
+}
 
 
 // STAR RATING
