@@ -51,9 +51,11 @@ function timer(){
 // EVENT LISTENR ON GRID CONTAINER
 gridContainer.addEventListener('click', function(e){
     let clicked = e.target;
+    console.log(clicked.classList);
 
     if(clicked.classList.contains('grid-container') ||
-        clicked.parentNode.classList.contains('selected')){
+        clicked.parentNode.classList.contains('selected') ||
+        clicked.classList.contains('match')){
         return;
     }
 
@@ -132,8 +134,6 @@ function modal(){
     totalTime.innerHTML = seconds;
     totalMoves.innerHTML = moves;
     totalStars.innerHTML = rating;
-
-
 
     // display modal
     modal.style.display = 'block';
