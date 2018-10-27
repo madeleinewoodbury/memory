@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Memory Game</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 </head>
 <body>
     <div class="container">
@@ -13,11 +14,23 @@
                 <h1>Memory Card Game</h1>
             </header>
             <div class="game-stats">
-                <div id="moves">
-                    <p>Moves: <span id="moves-display"></span></p>
+                <div class="moves">
+                    <ul id="stars">
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                    </ul>
+                    <p id="moves">
+                        Moves: <span id="moves-display"></span>
+                    </p>
                 </div>
-                <div id="timer">
-                    <p>Time: <span id="timerDisplay">0</span></p>
+                <div class="timer">
+                    <p id="timer">
+                        Time: <span id="timerDisplay">0</span>
+                    </p>                        
+                    <p class="restart">
+                        <span id="restartBtn"><i class="fas fa-redo"></i></span>
+                    </p>
                 </div>
             </div>
             <div class="grid-container"></div>

@@ -38,7 +38,7 @@ for(let i = 0; i < iconsArray.length; i++){
 // TIMER
 let timerDisplay = document.querySelector('#timerDisplay');
 let seconds = 0;
-// let interval = setInterval(timer, 1000);
+let interval = setInterval(timer, 1000);
 
 function timer(){
     seconds++;
@@ -132,6 +132,10 @@ function modal(){
     });
 }
 
+// RESTART BUTTON
 
+const restartBtn = document.querySelector('#restartBtn');
 
-
+restartBtn.addEventListener('click', function(){
+    window.location.reload(true);
+});
