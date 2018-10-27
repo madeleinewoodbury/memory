@@ -76,8 +76,6 @@ li{
 }
 
 
-
-
 /* CARD GRID */
 
 .grid-container{
@@ -175,4 +173,100 @@ a{
 
 .hide{
     display: none;
+}
+
+.footer{
+    text-align: center;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 685px){
+
+    /* GAME STATS */
+    
+    .game-stats{
+        width: 500px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    #timer{
+        width: 70%;
+        text-align: right;
+        padding-right: 10px;
+    }
+    
+    #stars{
+        padding-right: 20px;
+    }
+    
+    /* CARD GRID */
+    
+    .grid-container{
+        width: 480px;
+        min-height: 550px;
+        padding: 16px;
+        border-radius: 10px;
+    }
+    
+    .card{
+        margin: 1px;
+        height: 100px;
+        width: 100px; 
+    }
+    
+    .back, .front{
+        height: 100px;
+        width: 100px;
+        background-size: 70px;
+    }
+    
+}
+
+@media screen and (max-width: 500px){
+
+    h1{
+        margin-bottom: 0;
+    }
+
+    /* GAME STATS */
+    
+    .game-stats{
+        width: 300px;
+        font-size: 16px;
+    }
+    
+    #timer{
+        padding-right: 5px;
+    }
+    
+    #stars{
+        padding: 0 5px 0 0;
+    }
+    
+    /* CARD GRID */
+    
+    .grid-container{
+        width: 300px;
+        min-height: 360px;
+        padding: 8px;
+    }
+    
+    .card{
+        margin: 4px;
+        height: 80px;
+        width: 63px; 
+    }
+    
+    .back, .front{
+        height: 80px;
+        width: 63px;
+        background-size: 45px;
+    }
+    
+    .footer{
+        font-size: 16px;
+    }
 }

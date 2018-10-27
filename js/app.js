@@ -107,7 +107,6 @@ gridContainer.addEventListener('click', function(e){
         for(let card of selectedCards){
             card.classList.remove('selected');
             card.children[1].classList.add('match');
-            console.log(card.children[1]);
         }
 
         matchesFound++;
