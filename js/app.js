@@ -5,6 +5,9 @@ let firstCard = '';
 let secondCard = '';
 let moves = 0;
 let matchesFound = 0;
+let rating = 3;
+
+const stars = document.querySelectorAll('li');
 
 let movesDisplay = document.getElementById('moves-display');
 movesDisplay.textContent = moves;
@@ -45,6 +48,7 @@ function timer(){
     timerDisplay.innerHTML = seconds;
 }
 
+// EVENT LISTENR ON GRID CONTAINER
 gridContainer.addEventListener('click', function(e){
     let clicked = e.target;
 
@@ -57,6 +61,10 @@ gridContainer.addEventListener('click', function(e){
     if(count < 2){
         count++;
         movesDisplay.textContent = moves += 1;
+
+        // Check star rating
+        starRating();
+
         let selectedCard = clicked.parentNode;
         selectedCard.classList.toggle('flip');
         selectedCard.classList.toggle('selected');
@@ -117,10 +125,16 @@ function modal(){
     const modal = document.querySelector('.modal');
     const restartBtn = document.querySelector('#restart-btn');
     const totalTime = document.querySelector('#totalTime');
+    const totalMoves = document.querySelector('#totalMoves');
+    const totalStars = document.querySelector('#totalStars');
 
     // clear interval and display total time
     clearInterval(interval); 
     totalTime.innerHTML = seconds;
+    totalMoves.innerHTML = moves;
+    totalStars.innerHTML = rating;
+
+
 
     // display modal
     modal.style.display = 'block';
@@ -139,3 +153,21 @@ const restartBtn = document.querySelector('#restartBtn');
 restartBtn.addEventListener('click', function(){
     window.location.reload(true);
 });
+
+
+// STAR RATING
+
+
+function starRating(){
+    if(moves > 25 && rating === 3){
+        stars[2].classList.add('hide');
+        rating = 2;
+        console.log('New rating: ' + rating);
+    }else if(moves > 35 && rating === 2){
+        stars[1].classList.add('hide');
+        rating = 1;
+        console.log('New rating: ' + rating);
+    }
+}
+
+
