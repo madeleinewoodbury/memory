@@ -1,4 +1,6 @@
+// -----------------
 // GLOBAL VARIABLES
+// -----------------
 
 const gridContainer = document.querySelector('.grid-container');
 const stars = document.querySelectorAll('li');
@@ -15,6 +17,7 @@ let timerDisplay = document.querySelector('#timerDisplay');
 let seconds = 0;
 let interval = setInterval(timer, 1000);
 
+// set the initial moves to 0
 movesDisplay.textContent = moves;
 
 // randomly sort iconsArray
@@ -22,7 +25,7 @@ iconsArray.sort(function(){
     return 0.5 - Math.random();
 });
 
-// draw card grid
+// draw the grid of cards
 for(let i = 0; i < iconsArray.length; i++){
     const card = document.createElement('card');
     card.classList.add('card');
@@ -43,12 +46,12 @@ for(let i = 0; i < iconsArray.length; i++){
     gridContainer.appendChild(card);
 }
 
-// event listener on gridContainer
+// EVENT LISTENER
 gridContainer.addEventListener('click', function(e){
     // store the card clicked
     let clicked = e.target;
 
-    // determine if an unselected card has been clicked
+    // determine if card clicked is a valid option
     if(clicked.classList.contains('grid-container') ||
         clicked.parentNode.classList.contains('selected') ||
         clicked.classList.contains('match')){
@@ -58,10 +61,6 @@ gridContainer.addEventListener('click', function(e){
     // only 2 cards can be selected at a time
     if(count < 2){
         count++;
-        movesDisplay.textContent = moves += 1;
-
-        // Check star rating
-        starRating();
 
         // access the clicked card's parant and toggle flip and selecte class
         let selectedCard = clicked.parentNode;
@@ -73,23 +72,28 @@ gridContainer.addEventListener('click', function(e){
             firstCard = selectedCard.dataset.name;
         }else{
             secondCard = selectedCard.dataset.name;
+
+            // update moves
+            movesDisplay.textContent = moves += 1;
+            // check star rating
+            starRating();  
         }
 
         if(firstCard && secondCard){
             if(firstCard === secondCard){
-                console.log('MATCH!!!');
                 match();
-            }else{
-                console.log('Sorry, not a match');
             }
 
             // reset guesses
             setTimeout(resetGuesses, 1000);
         }
     }
-     
+ 
+// ----------
 // FUNCTIONS
+// ----------
 
+// RESET GUESSES AND COUNT
 function resetGuesses(){
     firstCard = '';
     secondCard = '';
@@ -103,6 +107,7 @@ function resetGuesses(){
     }
 }
 
+// MATCH
 function match(){
     // replace the selected class with match
     let selectedCards = document.querySelectorAll('.selected');
@@ -116,12 +121,12 @@ function match(){
     // check if all matches have been found
     if(matchesFound === 8){
         modal();
-        console.log('GAME WON!');
     }
 }
 
 })
 
+// MODAL
 function modal(){
     const modal = document.querySelector('.modal');
     const restartBtn = document.querySelector('#restart-btn');
@@ -141,36 +146,32 @@ function modal(){
     restartBtn.addEventListener('click', function(){
         console.log('restart button clicked')
         modal.style.display = 'none';
+
+        // reload the window to retart the game
         window.location.reload(true);
     });
 }
 
-// RESTART BUTTON
+// PLAY AGAIN BUTTON
+const playAgainBtn = document.querySelector('#playAgainBtn');
 
-const restartBtn = document.querySelector('#restartBtn');
-
-restartBtn.addEventListener('click', function(){
+playAgainBtn.addEventListener('click', function(){
     window.location.reload(true);
 });
 
 // TIMER
-
-
 function timer(){
     seconds++;
     timerDisplay.innerHTML = seconds;
 }
 
-
 // STAR RATING
-
-
 function starRating(){
-    if(moves > 25 && rating === 3){
+    if(moves > 15 && rating === 3){
         stars[2].classList.add('hide');
         rating = 2;
         console.log('New rating: ' + rating);
-    }else if(moves > 35 && rating === 2){
+    }else if(moves > 20 && rating === 2){
         stars[1].classList.add('hide');
         rating = 1;
         console.log('New rating: ' + rating);
