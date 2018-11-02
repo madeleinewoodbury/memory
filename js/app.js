@@ -170,11 +170,9 @@ function starRating(){
     if(moves > 15 && rating === 3){
         stars[2].classList.add('hide');
         rating = 2;
-        console.log('New rating: ' + rating);
     }else if(moves > 20 && rating === 2){
         stars[1].classList.add('hide');
         rating = 1;
-        console.log('New rating: ' + rating);
     }
 }
 
