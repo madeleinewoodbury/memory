@@ -4,7 +4,10 @@
 
 const gridContainer = document.querySelector('.grid-container');
 const stars = document.querySelectorAll('li');
-const iconsArray = ["airplane", "car", "doughnut", "earth-globe", "gamepad", "llama", "rocket", "squirrel", "airplane", "car", "doughnut", "earth-globe", "gamepad", "llama", "rocket", "squirrel"];
+const icons = ["airplane", "car", "doughnut", "earth-globe", "gamepad", "llama", "rocket", "squirrel"];
+
+// double the array
+const iconsArray = icons.concat(icons);
 
 let count = 0;
 let firstCard = '';
@@ -75,8 +78,8 @@ gridContainer.addEventListener('click', function(e){
 
             // update moves
             movesDisplay.textContent = moves += 1;
-            // check star rating
-            starRating();  
+            // check star rating nad update stars displayed
+            updateStars();  
         }
 
         if(firstCard && secondCard){
@@ -165,8 +168,8 @@ function timer(){
     timerDisplay.innerHTML = seconds;
 }
 
-// STAR RATING
-function starRating(){
+// REMOVE STARS 
+function updateStars(){
     if(moves > 15 && rating === 3){
         stars[2].classList.add('hide');
         rating = 2;
