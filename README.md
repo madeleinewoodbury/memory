@@ -1,6 +1,10 @@
 # Memory Card Game
 A classic memory game where the object is to find all the matching cards
 
+## Demo
+
+- [Click to play game](https://relaxed-euler-181915.netlify.app/)
+
 ## Dependencies
 * [Flaticon](https://www.flaticon.com/) - Image icons
 * [Font Awesome](https://fontawesome.com/?from=io) - Star icons and replay button
